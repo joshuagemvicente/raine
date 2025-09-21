@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  // output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WaitlistEntry {
+  id String @id @default(cuid())
+
+  // User identification
+  name  String
+  email String
+
+  // App identification
+  appSlug String // e.g., "my-awesome-app", "chat-app", etc.
+
+  // Position in waitlist
+  position Int @default(autoincrement())
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Ensure one entry per email per app
+  @@unique([email, appSlug])
+  @@index([appSlug, position])
+  @@map("waitlist_entries")
+}
