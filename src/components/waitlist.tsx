@@ -82,13 +82,17 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
   };
   return (
     <div className="min-h-screen bg-white flex justify-center items-center relative overflow-hidden">
-
-
       <div className="relative z-10 max-w-2xl mx-auto px-6 py-12 sm:py-16">
         {/* Logo */}
         <div className="mb-6">
           {/* <div className="flex items-center justify-center"> */}
-            <Image className="rounded-md" src={"/raine-new.png"} alt="raine-logo" width={48} height={48} />
+          <Image
+            className="rounded-md"
+            src={"/raine-new.png"}
+            alt="raine-logo"
+            width={48}
+            height={48}
+          />
           {/* </div> */}
         </div>
 
@@ -100,18 +104,22 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
           </div>
         </div>
 
-
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight text-balance">
           Join <span className="underline italic">Raine</span> Waiting List for
           Exclusive Access
         </h1>
 
-
         <p className="text-base text-gray-600 mb-8 leading-relaxed">
-          Be among the first to experience Raine – the simple, powerful to-do app designed to help you organize your tasks, boost your productivity, and stay focused. Join the waitlist now for early access!
+          Be among the first to experience Raine – the simple, powerful to-do
+          app designed to help you organize your tasks, boost your productivity,
+          and stay focused. Join the waitlist now for early access!
         </p>
         <p className="text-base text-gray-600 mb-8 leading-relaxed">
-          For more information, you can visit the about <Link href="/about" className="underline">page</Link>.
+          For more information, you can visit the about{" "}
+          <Link href="/about" className="underline">
+            page
+          </Link>
+          .
         </p>
 
         <div className="mb-8">
@@ -126,7 +134,9 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-md mx-4">
               <DialogHeader>
-                <DialogTitle className="text-base">Join the Waitlist</DialogTitle>
+                <DialogTitle className="text-base">
+                  Join the Waitlist
+                </DialogTitle>
                 <DialogDescription className="text-xs">
                   Get exclusive access to cutting-edge AI tools. We'll notify
                   you when we launch!
@@ -137,7 +147,9 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
                 className="space-y-4"
               >
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-xs">Name (optional)</Label>
+                  <Label htmlFor="name" className="text-xs">
+                    Name (optional)
+                  </Label>
                   <Input
                     {...register("name")}
                     id="name"
@@ -153,7 +165,9 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-xs">Email *</Label>
+                  <Label htmlFor="email" className="text-xs">
+                    Email *
+                  </Label>
                   <Input
                     {...register("email")}
                     id="email"
@@ -209,7 +223,8 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
             </Avatar>
           </div>
           <span className="text-xs text-gray-600 font-medium">
-            {initialStats?.totalEntries || 52} people on the waitlist
+            100+ people on the waitlist
+            {/* {initialStats?.totalEntries || } people on the waitlist */}
             {/* {initialStats?.recentEntries && initialStats.recentEntries > 0 && ( */}
             {/*   <span className="block text-xs text-gray-500"> */}
             {/*     {initialStats.recentEntries} joined in the last 24 hours */}
