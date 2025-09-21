@@ -105,8 +105,8 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold  mb-6 leading-tight text-balance">
-          Join <span className="underline italic">Raine</span> Waiting List for
-          Exclusive Access
+          Get early access to <span className="underline italic">Raine</span>
+          —your new way to stay on top of tasks.{" "}
         </h1>
 
         <p className="text-base  mb-8 leading-relaxed">
@@ -184,7 +184,7 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full text-white text-xs py-5"
+                  className="w-full text-xs py-5"
                   disabled={isPending}
                 >
                   {isPending ? "Joining..." : "Join Waitlist"}
