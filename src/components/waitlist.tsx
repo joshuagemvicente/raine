@@ -19,6 +19,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { createWaitlistEntryAction } from "@/actions/waitlist";
 import { toast } from "sonner";
+import Image from "next/image";
+import Link from "next/link";
 
 const waitListSchema = z.object({
   name: z.string().optional(),
@@ -79,54 +81,53 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
     });
   };
   return (
-    <div className="min-h-screen bg-white relative overflow-hidden">
-      {/* Pink gradient blob in top right */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-pink-400/30 via-pink-300/20 to-transparent rounded-full blur-3xl"></div>
+    <div className="min-h-screen bg-white flex justify-center items-center relative overflow-hidden">
 
-      <div className="relative z-10 max-w-2xl mx-auto px-6 py-16">
+
+      <div className="relative z-10 max-w-2xl mx-auto px-6 py-12 sm:py-16">
         {/* Logo */}
-        <div className="mb-12">
-          <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center">
-            <div className="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
-          </div>
+        <div className="mb-6">
+          {/* <div className="flex items-center justify-center"> */}
+            <Image className="rounded-md" src={"/raine-new.png"} alt="raine-logo" width={48} height={48} />
+          {/* </div> */}
         </div>
 
         {/* Badge */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-sm font-medium">
-            <span>🔥</span>
-            Amazing Curated AI Tools
+          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-xs font-medium">
+            <span>🌧️</span>
+            Introducing Raine
           </div>
         </div>
 
-        {/* Main heading */}
-        <h1 className="text-5xl font-bold text-gray-900 mb-6 leading-tight text-balance">
+
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight text-balance">
           Join <span className="underline italic">Raine</span> Waiting List for
           Exclusive Access
         </h1>
 
-        {/* Description */}
-        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-          You'll gain exclusive access to a curated collection of cutting-edge
-          AI tools that will transform the way you work and create. Join the
-          waitlist now!
+
+        <p className="text-base text-gray-600 mb-8 leading-relaxed">
+          Be among the first to experience Raine – the simple, powerful to-do app designed to help you organize your tasks, boost your productivity, and stay focused. Join the waitlist now for early access!
+        </p>
+        <p className="text-base text-gray-600 mb-8 leading-relaxed">
+          For more information, you can visit the about <Link href="/about" className="underline">page</Link>.
         </p>
 
-        {/* CTA Button with Dialog */}
         <div className="mb-8">
-          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <Dialog>
             <DialogTrigger asChild>
               <Button
                 size="lg"
-                className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200"
+                className="text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto cursor-pointer"
               >
                 Join the Waitlist
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md mx-4">
               <DialogHeader>
-                <DialogTitle>Join the Waitlist</DialogTitle>
-                <DialogDescription>
+                <DialogTitle className="text-base">Join the Waitlist</DialogTitle>
+                <DialogDescription className="text-xs">
                   Get exclusive access to cutting-edge AI tools. We'll notify
                   you when we launch!
                 </DialogDescription>
@@ -136,40 +137,40 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
                 className="space-y-4"
               >
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name (optional)</Label>
+                  <Label htmlFor="name" className="text-xs">Name (optional)</Label>
                   <Input
                     {...register("name")}
                     id="name"
                     type="text"
                     placeholder="Enter your name"
-                    className="w-full"
+                    className="w-full text-xs py-5"
                     disabled={isPending}
                   />
                   {errors.name && (
-                    <span className="text-red-500 text-sm">
+                    <span className="text-red-500 text-xs">
                       {errors.name.message}
                     </span>
                   )}
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email" className="text-xs">Email *</Label>
                   <Input
                     {...register("email")}
                     id="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full"
+                    className="w-full text-xs py-5"
                     disabled={isPending}
                   />
                   {errors.email && (
-                    <span className="text-red-500 text-sm">
+                    <span className="text-red-500 text-xs">
                       {errors.email.message}
                     </span>
                   )}
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-pink-500 hover:bg-pink-600 text-white"
+                  className="w-full text-white text-xs py-5"
                   disabled={isPending}
                 >
                   {isPending ? "Joining..." : "Join Waitlist"}
@@ -180,34 +181,34 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
         </div>
 
         {/* Social proof */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 mt-12">
           <div className="flex -space-x-2">
             <Avatar className="w-8 h-8 border-2 border-white">
               <AvatarImage src="/professional-woman-diverse.png" />
-              <AvatarFallback className="bg-blue-500 text-white text-xs">
+              <AvatarFallback className="bg-blue-500 text-white text-xs font-semibold">
                 JD
               </AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-white">
               <AvatarImage src="/professional-man.png" />
-              <AvatarFallback className="bg-green-500 text-white text-xs">
+              <AvatarFallback className="bg-green-500 text-white text-xs font-semibold">
                 SM
               </AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-white">
               <AvatarImage src="/professional-person.png" />
-              <AvatarFallback className="bg-purple-500 text-white text-xs">
+              <AvatarFallback className="bg-purple-500 text-white text-xs font-semibold">
                 AL
               </AvatarFallback>
             </Avatar>
             <Avatar className="w-8 h-8 border-2 border-white">
               <AvatarImage src="/diverse-business-person.png" />
-              <AvatarFallback className="bg-orange-500 text-white text-xs">
+              <AvatarFallback className="bg-orange-500 text-white text-xs font-semibold">
                 MK
               </AvatarFallback>
             </Avatar>
           </div>
-          <span className="text-sm text-gray-600 font-medium">
+          <span className="text-xs text-gray-600 font-medium">
             {initialStats?.totalEntries || 52} people on the waitlist
             {/* {initialStats?.recentEntries && initialStats.recentEntries > 0 && ( */}
             {/*   <span className="block text-xs text-gray-500"> */}
