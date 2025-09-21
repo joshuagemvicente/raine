@@ -81,7 +81,7 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
     });
   };
   return (
-    <div className="min-h-screen bg-white flex justify-center items-center relative overflow-hidden">
+    <div className="min-h-screen flex justify-center items-center relative overflow-hidden">
       <div className="relative z-10 max-w-2xl mx-auto px-6 py-12 sm:py-16">
         {/* Logo */}
         <div className="mb-6">
@@ -98,23 +98,23 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
 
         {/* Badge */}
         <div className="mb-8">
-          <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-800 px-4 py-2 rounded-full text-xs font-medium">
+          <div className="inline-flex items-center gap-2 bg-blue-700 dark:bg-blue-500 px-4 py-2 rounded-full text-xs font-medium">
             <span>🌧️</span>
             Introducing Raine
           </div>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6 leading-tight text-balance">
+        <h1 className="text-3xl sm:text-4xl font-bold  mb-6 leading-tight text-balance">
           Join <span className="underline italic">Raine</span> Waiting List for
           Exclusive Access
         </h1>
 
-        <p className="text-base text-gray-600 mb-8 leading-relaxed">
+        <p className="text-base  mb-8 leading-relaxed">
           Be among the first to experience Raine – the simple, powerful to-do
           app designed to help you organize your tasks, boost your productivity,
           and stay focused. Join the waitlist now for early access!
         </p>
-        <p className="text-base text-gray-600 mb-8 leading-relaxed">
+        <p className="text-base  mb-8 leading-relaxed">
           For more information, you can visit the about{" "}
           <Link href="/about" className="underline">
             page
@@ -127,7 +127,7 @@ export default function WaitlistPage({ initialStats }: WaitlistPageProps) {
             <DialogTrigger asChild>
               <Button
                 size="lg"
-                className="text-white px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto cursor-pointer"
+                className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-200 w-full sm:w-auto cursor-pointer"
               >
                 Join the Waitlist
               </Button>
