@@ -6,27 +6,11 @@ import {
   type WaitlistEntryFormData,
   type WaitlistActionResult,
 } from "@/lib/waitlist-types";
-import { getClientIP, checkRateLimit } from "@/lib/rate-limit";
 import { z } from "zod";
-
 export async function createWaitlistEntryAction(
   formData: FormData,
 ): Promise<WaitlistActionResult> {
   try {
-    // Get client IP for rate limiting
-    const clientIP = getClientIP();
-    
-    // Check rate limit (5 submissions per IP per day)
-    const rateLimitResult = checkRateLimit(clientIP, 5, 24 * 60 * 60 * 1000);
-    
-    if (!rateLimitResult.allowed) {
-      const resetTime = new Date(rateLimitResult.resetTime);
-      return {
-        success: false,
-        message: `Too many waitlist submissions. You can try again after ${resetTime.toLocaleDateString()} at ${resetTime.toLocaleTimeString()}.`,
-      };
-    }
-
     // Parse and validate form data
     const rawData = {
       name: formData.get("name") as string,
@@ -77,7 +61,7 @@ export async function createWaitlistEntryAction(
 
     return {
       success: true,
-      message: `Welcome to the waitlist! We'll notify you when we launch. (${rateLimitResult.remaining} submissions remaining today)`,
+      message: `Welcome to the waitlist! We'll notify you when we launch.`,
       position: newEntry.position,
       totalEntries,
     };
